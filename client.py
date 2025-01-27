@@ -5,7 +5,7 @@ import os
 def start_client():
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        client.connect(("localhost", 5555))  
+        client.connect(("localhost", 5555))  #host ip
     except Exception as e:
         print(f"Unable to connect to the server: {e}")
         return
@@ -45,4 +45,13 @@ def start_client():
                 if move == "EXIT":
                     print("You have exited the game.")
                     break
-         
+            else:
+                print("Invalid move! Use W, A, S, D, or EXIT.")
+        except Exception as e:
+            print(f"Error sending data: {e}")
+            break
+
+    client.close()
+
+if __name__ == "__main__":
+    start_client()
